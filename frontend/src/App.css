@@ -1,0 +1,307 @@
+/* src/App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: #f5f7fa;
+}
+
+.App {
+  min-height: 100vh;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.container {
+  display: flex;
+  gap: 30px;
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.left-panel {
+  flex: 0 0 40%;
+}
+
+.right-panel {
+  flex: 1;
+}
+
+.section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.section h2 {
+  margin-bottom: 16px;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.job-title-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.job-description-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.save-job-btn {
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.save-job-btn:hover {
+  background: #45a049;
+}
+
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-label {
+  padding: 12px;
+  border: 2px dashed #ddd;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #666;
+}
+
+.file-label:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+}
+
+.upload-btn,
+.match-btn,
+.shortlist-btn {
+  padding: 12px 24px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.upload-btn:hover:not(:disabled),
+.match-btn:hover:not(:disabled),
+.shortlist-btn:hover:not(:disabled) {
+  background: #5a67d8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.upload-btn:disabled,
+.match-btn:disabled,
+.shortlist-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.shortlist-btn {
+  width: 100%;
+  background: #f59e0b;
+}
+
+.shortlist-btn:hover:not(:disabled) {
+  background: #d97706;
+}
+
+.candidates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.candidate-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  transition: all 0.3s;
+}
+
+.candidate-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.candidate-card h3 {
+  color: #333;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.match-score {
+  margin: 12px 0;
+}
+
+.score {
+  display: inline-block;
+  padding: 6px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.justification {
+  background: #f3f4f6;
+  padding: 12px;
+  border-radius: 6px;
+  margin: 10px 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.skills,
+.experience,
+.education,
+.matched-skills,
+.missing-skills {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.matched-skills {
+  color: #16a34a;
+}
+
+.missing-skills {
+  color: #dc2626;
+}
+
+.match-btn {
+  margin-top: 12px;
+  width: 100%;
+  background: #8b5cf6;
+}
+
+.no-candidates {
+  color: #666;
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .left-panel {
+    flex: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .container {
+    padding: 16px;
+  }
+  
+  .section {
+    padding: 16px;
+  }
+}
+/* Add to App.css */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+  transform: scale(1.1);
+}
+
+.selected-files {
+  margin-top: 10px;
+  padding: 10px;
+  background: #f3f4f6;
+  border-radius: 6px;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.selected-files ul {
+  margin: 5px 0;
+  padding-left: 20px;
+}
+
+.selected-files li {
+  font-size: 14px;
+  color: #333;
+}
