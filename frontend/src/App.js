@@ -12,16 +12,10 @@ function App() {
 
   const API_BASE_URL = 'http://localhost:8000';
   axios.defaults.baseURL = API_BASE_URL;
-
-  // Use ref to track previous job description
   const prevJobDescriptionRef = useRef('');
-
-  // Auto-load resumes when component mounts
   useEffect(() => {
     loadAllResumes();
   }, []);
-
-  // Auto-match/rematch ALL resumes when job description changes
   useEffect(() => {
     const hasJobDescription = jobDescription.trim().length > 0;
     const hasResumes = resumes.length > 0;
@@ -35,8 +29,6 @@ function App() {
       }
     }
   }, [jobDescription]);
-
-  // Load all resumes from database
   const loadAllResumes = async () => {
     setLoading(true);
     try {
@@ -70,8 +62,6 @@ function App() {
       setLoading(false);
     }
   };
-
-  // Upload resume
   const uploadResume = async (file) => {
     if (!file) {
       alert('Please select a file first');
@@ -123,8 +113,6 @@ function App() {
       return null;
     }
   };
-
-  // Match a single resume
   const matchSingleResume = async (resumeId) => {
     if (!jobDescription.trim()) {
       return;
@@ -160,8 +148,6 @@ function App() {
       console.error('Match error:', error);
     }
   };
-
-  // REMATCH ALL resumes (including already matched ones)
   const rematchAllResumes = async () => {
     if (!jobDescription.trim() || resumes.length === 0) {
       return;
@@ -262,8 +248,6 @@ function App() {
       setLoading(false);
     }
   };
-
-  // Save job description (triggers rematch via useEffect)
   const saveJobDescription = async () => {
     if (!jobDescription.trim()) {
       alert('Please paste a job description first.');
@@ -293,8 +277,6 @@ function App() {
       setLoading(false);
     }
   };
-
-  // Handle file selection
   const handleFileChange = (event) => {
     const files = event.target.files;
     if (files && files.length > 0) {
@@ -329,8 +311,6 @@ function App() {
       setSelectedFile(null);
     }
   };
-
-  // Handle upload
   const handleUpload = async () => {
     if (!selectedFile || selectedFile.length === 0) {
       alert('Please select at least one file');
@@ -390,8 +370,6 @@ function App() {
       setLoading(false);
     }
   };
-
-  // Delete resume from database
   const deleteResume = async (resumeId) => {
     if (!window.confirm('Delete this resume? This action cannot be undone!')) {
       return;
@@ -413,8 +391,6 @@ function App() {
       setLoading(false);
     }
   };
-
-  // Candidate Card Component
   const CandidateCard = ({ resume }) => (
     <div className="candidate-card">
       <div className="card-header">
